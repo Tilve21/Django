@@ -1,0 +1,107 @@
+<!-- templates/_base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    {% block title %}
+    <title>Pawnshop</title>
+    {% endblock title %}
+    
+    <script src="{% static 'js/autocomplete/jquery-3.6.0.js' %}"></script>
+    <script src="{% static 'js/autocomplete/jquery-ui.js' %}"></script>
+    <link
+      rel="stylesheet"
+      {% comment %} href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" {% endcomment %}
+      href="{% static 'css/bootstrap/bootstrap.min.css' %}"
+      
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/base.css' %}"
+    />
+
+    <script
+      {% comment %} src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/popper.min.js' %}"
+      
+      crossorigin="anonymous"
+    ></script>
+    <script
+      {% comment %} src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" {% endcomment %}
+      src="{% static 'js/bootstrap/bootstrap.min.js' %}"
+      
+      crossorigin="anonymous"
+    ></script>
+
+
+    {% block css %} 
+    
+    {% endblock css %}
+  </head>
+
+  <body style="background-color: var(--background-color);">
+
+    <!-- Navbar -->
+        {% block Navbar %}
+    <!-- Navbar -->
+    <div
+    class="
+      d-flex
+      flex-column flex-md-row
+      align-items-center
+      p-3
+      px-md-4
+      mb-3
+      border-bottom
+      shadow-sm
+    "
+    style="background-color: var(--background-light-color);"
+    >
+      <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
+      <a class="mr-md-auto float-left" href="{% url 'home' %}">
+        <img src="{% static 'images/home/logo.png' %}" alt="" height="50" />
+      </a>
+      
+  
+
+      <div class="dropdown mr-5">
+        <button 
+        class="btn btn-lg dropdown-toggle" 
+        type="button" data-toggle="dropdown" 
+        aria-haspopup="true" 
+        aria-expanded="false"
+        style="background-color: var(--background-light-color);"
+        >
+        <a class="bluetext" width="200px"> 
+          <strong>{{ user.username }}</strong></a>
+        <!-- <strong> {{ user.username }} </strong> -->
+        </button>
+        <div class="dropdown-menu float-right" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item bluetext" href="{% url 'logout' %}">Logout</a>
+          <a class="dropdown-item bluetext" href="#">Configuración</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- Navbar -->
+    {% endblock Navbar %}
+    <!-- END Navbar -->
+    
+    <!-- Content -->
+    {% block content %} {% endblock content %}
+    <!-- END Content -->
+    
+    <!-- JavaScript -->
+    {% block javascript %} {% endblock javascript %}
+    <!-- END JavaScript -->
+    
+    <!-- Footer -->
+    {% block footer %} {% endblock footer %}    
+    <!-- END Footer -->
+  </body>
+
+
+</html>
